@@ -2,6 +2,10 @@
 
 ## Description
 
+Custom delivery to NuGet (or GitHub Packages), skipping apps which have already been delivered with the same version or the same content
+
+## Details
+
 `DeliverToNuGet.ps1` is a custom AL-Go for GitHub delivery script, which replaces the built-in NuGet delivery.
 For every app and test app in each project, it calculates the NuGet package name and checks whether the app has already been delivered before pushing anything.
 If a package with the same version already exists on the feed, or the latest package on the feed contains an app with the same code, the app is skipped, otherwise a new package is created and pushed to the feed.
