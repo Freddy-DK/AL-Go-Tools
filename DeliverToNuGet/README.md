@@ -4,14 +4,14 @@
 
 `DeliverToNuGet.ps1` is a custom AL-Go for GitHub delivery script, which replaces the built-in NuGet delivery.
 For every app and test app in each project, it calculates the NuGet package name and checks whether the app has already been delivered before pushing anything.
-If a package with the same version already exists on the feed, or the latest package on the feed contains an app with the same code, the app is skipped.
+If a package with the same version already exists on the feed, or the latest package on the feed contains an app with the same code, the app is skipped, otherwise a new package is created and pushed to the feed.
 
 > [!NOTE]
 > When comparing code, the script ignores the version number in app.json and system files that differ between builds of the same source code.
-> 
-Otherwise a new package is created and pushed to the feed.
+
 Continuous delivery (CD) packages are published with the `preview` prerelease tag, releases are published without a prerelease tag.
 Packages are only delivered once per run, even if multiple projects contain the same app.
+
 A delivery manifest (`DeliveryManifest-NuGet.json`) listing the packages pushed in the run is written to the temp folder.
 
 ## How to use
